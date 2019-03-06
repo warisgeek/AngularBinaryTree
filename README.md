@@ -1,6 +1,7 @@
 # AngularBinaryTree
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.2.
+In my case requirment was to create two nodes when user add child node. We can cusomize as per our requirements 
 
 ## Development server
 
