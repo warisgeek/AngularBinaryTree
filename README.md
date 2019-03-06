@@ -4,6 +4,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 My requirment was to create two nodes when user add child node. We can cusomize as per our requirements 
 
+### Demo: https://warisgeek.github.io/AngularBinaryTree/
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
