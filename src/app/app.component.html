@@ -1,0 +1,24 @@
+<div class="tree">
+    <ul>
+
+        <ng-template #recursiveList let-treeNodes>
+            <li *ngFor="let item of treeNodes;">
+                <div class="node">
+                    <h2>{{item.Text}}</h2>
+                    <div class="tree-add-button" *ngIf="item.Children.length==0">
+                        <i (click)="addQuestion(item)" title="Add Question" class="fa text-primary fa-plus-circle"></i> </div>
+                    <div class="tree-del-button" *ngIf="item.Children.length!=0">
+                        <i title="Remove Question" (click)="removeQuestion(item)" class="fa fa-times-circle text-danger"></i>
+                    </div>
+
+                </div>
+                <ul *ngIf="item.Children.length > 0">
+                    <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: item.Children }"></ng-container>
+                </ul>
+            </li>
+        </ng-template>
+        <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: treeNodes }"></ng-container>
+
+
+    </ul>
+</div>

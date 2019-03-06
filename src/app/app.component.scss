@@ -1,0 +1,184 @@
+$border-width: 1px;
+
+/*Now the CSS*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.tree {
+    overflow: auto;
+    background: #eeeeee;
+    padding-bottom: 10px;
+    min-height: 600px;
+}
+
+.card-header {
+    padding: .35rem 1.25rem;
+}
+
+.tree ul {
+    position: relative;
+    padding: 1em 0;
+    white-space: nowrap;
+    margin: 0 auto;
+    text-align: center;
+    &::after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+.tree li {
+    display: inline-block; // need white-space fix
+    vertical-align: top;
+    text-align: center;
+    list-style-type: none;
+    position: relative;
+    padding: 1em .5em 0 .5em;
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 50%;
+        border-top: $border-width solid #ccc;
+        width: 50%;
+        height: 1em;
+    }
+    &::after {
+        right: auto;
+        left: 50%;
+        border-left: $border-width solid #ccc;
+    }
+    &:only-child::after,
+    &:only-child::before {
+        display: none;
+    }
+    &:only-child {
+        padding-top: 0;
+    }
+    &:first-child::before,
+    &:last-child::after {
+        border: 0 none;
+    }
+    &:last-child::before {
+        border-right: $border-width solid #ccc;
+        border-radius: 0 5px 0 0;
+    }
+    &:first-child::after {
+        border-radius: 5px 0 0 0;
+    }
+}
+
+.tree ul ul::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    border-left: $border-width solid #ccc;
+    width: 0;
+    height: 1em;
+}
+
+.tree-add-button {
+    bottom: 7px;
+    left: 5px;
+    width: 12px;
+    height: 12px;
+    cursor: pointer;
+}
+
+.tree-del-button {
+    width: 12px;
+    height: 12px;
+    bottom: 7px;
+    right: 5px;
+    cursor: pointer;
+}
+
+.tree-add-button,
+.tree-del-button,
+.tree-confirm-del-button {
+    position: absolute;
+    font-size: 12px;
+}
+
+h2 {
+    margin: 0px;
+    font-size: 13px;
+    font-weight: normal;
+    min-height: 20px;
+    white-space: normal;
+}
+
+div.tree h2:hover {
+    background: rgb(242, 242, 244);
+    cursor: text;
+}
+
+.node {
+    min-width: 200px;
+    max-width: 300px;
+    max-height: 150px;
+    min-height: 100px;
+    cursor: default;
+    border: 1px solid #e7e7e7;
+    display: inline-block;
+    padding: 5px;
+    background: #ffffff;
+    background: -moz-linear-gradient(top, #ffffff 0%, #fbfbfb 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #fbfbfb));
+    background: -webkit-linear-gradient(top, #ffffff 0%, #fbfbfb 100%);
+    background: -o-linear-gradient(top, #ffffff 0%, #fbfbfb 100%);
+    background: -ms-linear-gradient(top, #ffffff 0%, #fbfbfb 100%);
+    background: linear-gradient(to bottom, #ffffff 0%, #fbfbfb 100%);
+    line-height: 1.3em;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    position: relative;
+    box-shadow: 1px 1px 1px 1px #ddd;
+}
+
+.tree li .node:hover,
+.tree li .node:hover+ul li .node {
+    background: #c8e4f8;
+    color: #000;
+    border: 1px solid #94a0b4;
+}
+
+.tree-add-button:hover,
+.tree-del-button:hover {
+    cursor: pointer;
+}
+
+
+/*Connector styles on hover*/
+
+.tree li .node:hover+ul li::after,
+.tree li .node:hover+ul li::before,
+.tree li .node:hover+ul::before,
+.tree li .node:hover+ul ul::before {
+    border-color: #94a0b4;
+}
+
+.tree li:first-child::before {
+    content: '';
+    text-align: right;
+    padding-left: 5px;
+    right: 53%;
+    top: -2px;
+    vertical-align: top;
+}
+
+.tree li:last-child::after {
+    content: '';
+    text-align: left;
+    padding-left: 5px;
+    left: 53%;
+    top: -2px;
+    bottom: 50%;
+}
